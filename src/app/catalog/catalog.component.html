@@ -1,0 +1,26 @@
+<div>
+    <h1>Каталог товаров</h1>
+    <table>
+        <thead>
+          <tr>
+            <!-- <th>ID</th> -->
+            <th>Название</th>
+            <th>Цена</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+              <tr *ngFor="let group of data">
+                <!-- <td>{{group.id_good}}</td> -->
+                <td>{{group.name_good}}</td>
+                <td>{{group.price_good}}</td>
+              </tr>
+
+
+
+
+        </tbody>
+      </table>
+
+</div>
