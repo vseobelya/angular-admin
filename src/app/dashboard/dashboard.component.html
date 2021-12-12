@@ -1,2 +1,15 @@
 <br/><br/>
-<p align="center">Здесь будет корзина</p>
+<p>Ваша корзина</p>
+<table>
+  <tr>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Количество</th>
+  </tr>
+
+  <tr *ngFor="let item of items">
+    <td>{{item.name}}</td>
+    <td>{{item.price}}</td>
+    <td>1</td>
+  </tr>
+</table>

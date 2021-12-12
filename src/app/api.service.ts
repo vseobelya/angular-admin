@@ -2,6 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Users } from './users';
+import {Product} from './products'
 
 @Injectable({
 providedIn: 'root'
@@ -10,6 +11,7 @@ providedIn: 'root'
 export class ApiService {
   redirectUrl!: string;
   baseUrl:string = "http://localhost/angular-admin/php";
+
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 
   constructor(private httpClient : HttpClient) { }
@@ -52,6 +54,9 @@ export class ApiService {
   //get all goods details
     public getgoods()
       {
-          return this.httpClient.get(this.baseUrl + '/catalog.php');
+          return this.httpClient.get(this.baseUrl + '/catalog.php')
+          .pipe(map(Product => {
+            return Product;
+          }));
       }
 }

@@ -17,7 +17,7 @@
 
         <td><a *ngIf="loginbtn" routerLink="registration" routerLinkActive="active">Регистрация</a></td>
 
-        <td><a class="nav-link" *ngIf="logoutbtn" routerLink="dashboard" routerLinkActive="active">Корзина</a></td>
+        <td><a *ngIf="logoutbtn" routerLink="dashboard" routerLinkActive="active">Корзина</a></td>
 
         <td><button type="button" *ngIf="logoutbtn" (click)="logout()">Выйти</button></td>
 

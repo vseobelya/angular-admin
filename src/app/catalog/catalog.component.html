@@ -6,6 +6,7 @@
             <!-- <th>ID</th> -->
             <th>Название</th>
             <th>Цена</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -15,6 +16,11 @@
                 <!-- <td>{{group.id_good}}</td> -->
                 <td>{{group.name_good}}</td>
                 <td>{{group.price_good}}</td>
+                <td>
+                  <div class="">
+                    <button *ngIf="is_logged_in"  (click)="addToCart(group.name_good, group.price_good)">Купить</button>
+                  </div>
+                </td>
               </tr>
 
 
