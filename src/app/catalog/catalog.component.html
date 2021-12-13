@@ -12,16 +12,44 @@
         <tbody>
 
 
-              <tr *ngFor="let group of data">
+              <!-- <tr *ngFor="let group of data"> -->
                 <!-- <td>{{group.id_good}}</td> -->
+                <!-- <td>{{group.name_good}}</td>
+
+                <!-- <td>{{group.id_good}}</td> -->
+                <!-- <td>{{group.name_good}}</td>
+                <td>{{group.price_good}}</td>
+                <td>
+                  <div class=""> -->
+                    <!-- <button *ngIf="is_logged_in"  (click)="addToCart(group.name_good, group.price_good)">Купить</button> -->
+                    <!-- <button *ngIf="is_logged_in"  (click)="addToCart(data)">Купить</button>
+                  </div>
+                </td>
+              </tr>-->
+
+
+              <tr *ngFor="let group of data">
                 <td>{{group.name_good}}</td>
                 <td>{{group.price_good}}</td>
                 <td>
                   <div class="">
-                    <button *ngIf="is_logged_in"  (click)="addToCart(group.name_good, group.price_good)">Купить</button>
+                    <button *ngIf="is_logged_in"  (click)="addToCart(group.id_good, group.name_good, group.price_good)">Купить</button>
                   </div>
                 </td>
               </tr>
+
+
+
+
+              <!-- <tr *ngFor="let data of sampleSuggestionsArray">
+                <td>{{data.name}}</td>
+                <td>{{data.price}}</td>
+                <td>
+                  <div class="">
+                    <button *ngIf="is_logged_in"  (click)="addToCart(data)">Купить</button>
+                  </div>
+                </td>
+              </tr> -->
 
 
 

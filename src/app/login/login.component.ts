@@ -11,6 +11,7 @@ styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   angForm: FormGroup;
+
   constructor(private fb: FormBuilder,private dataService: ApiService,private router:Router) {
     this.angForm = this.fb.group({
       email: ['', [Validators.required,Validators.minLength(1), Validators.email]],
