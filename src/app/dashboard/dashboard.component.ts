@@ -12,12 +12,12 @@ import {Product} from '../products'
 export class DashboardComponent implements OnInit {
   items: Product[] = [];
 
-  sampleSuggestionsArray = [
-    new Product(1, "Ананас", 100, 0),
-    new Product(2, "Апельсин", 90, 0),
-    new Product(3, "Грейпфрут", 150, 0),
-    new Product(4, "Персик", 200, 0),
-    new Product(5, "Слива", 180, 0)
+  // sampleSuggestionsArray = [
+  //   new Product(1, "Ананас", 100, 0),
+  //   new Product(2, "Апельсин", 90, 0),
+  //   new Product(3, "Грейпфрут", 150, 0),
+  //   new Product(4, "Персик", 200, 0),
+  //   new Product(5, "Слива", 180, 0)
     // {
     //   id: "1",
     //   menuName: "Item 1",
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
     //   desc: "Lorem ipsum dolor sit amet..",
     //   qtyTotal: 0
     // }
-  ];
+  // ];
 
   constructor(private cartService: CartService) {
     this.items = this.cartService.getItems();
@@ -59,6 +59,21 @@ export class DashboardComponent implements OnInit {
   removeFromCart(item: any) {
     this.cartService.removeItem(item);
     this.items = this.cartService.getItems();
+  }
+
+  incrAmount(item: any) {
+    this.cartService.incrItemAmount(item);
+    this.items = this.cartService.getItems();
+  }
+
+  decrAmount(item: any) {
+    this.cartService.decrItemAmount(item);
+    this.items = this.cartService.getItems();
+  }
+
+  get total() {
+    return this.items.reduce((sum, current) => sum + current.subTotal, 0);
+
   }
 
 }

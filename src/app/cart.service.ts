@@ -58,6 +58,28 @@ export class CartService {
     }
   }
 
+  incrItemAmount(item: any) {
+    const index = this.items.findIndex(o => o.id === item.id);
+
+    if (index > -1) {
+      this.items[index].qtyTotal++;
+      this.items[index].subTotal = this.items[index].qtyTotal * this.items[index].price;
+      this.saveCart();
+    }
+  }
+
+  decrItemAmount(item: any) {
+    const index = this.items.findIndex(o => o.id === item.id);
+
+    if (index > -1 && this.items[index].qtyTotal>1) {
+      this.items[index].qtyTotal--;
+      this.items[index].subTotal = this.items[index].qtyTotal * this.items[index].price;
+      this.saveCart();
+    }
+  }
+
+
+
   itemInCart(item: any): boolean {
     return this.items.findIndex(o => o.id === item.id) > -1;
   }

@@ -5,12 +5,20 @@
     <th>Название</th>
     <th>Цена</th>
     <th>Количество</th>
+    <th>Стоимость</th>
   </tr>
 
   <tr *ngFor="let item of items">
     <td>{{item.name}}</td>
     <td>{{item.price}}</td>
     <td>{{item.qtyTotal}}</td>
+    <td>{{item.subTotal}}</td>
+    <td><button (click)="incrAmount(item)"> +</button></td>
+    <td><button (click)="decrAmount(item)"> -</button></td>
     <td><button (click)="removeFromCart(item)"> x</button></td>
+  </tr>
+  <tr>
+    <td>Итого</td>
+    <td>{{total}}</td>
   </tr>
 </table>
