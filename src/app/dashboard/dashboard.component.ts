@@ -105,20 +105,22 @@ export class DashboardComponent implements OnInit {
 }
 
   doorder(items: any)  {
-    const uuid = this.getUniqueId(2);
-    for (let index = 0; index < items.length; index++) {
-      const element = items[index];
-      this.dataService.makeorder(element, uuid)
+    if(items.length > 0){
+      const uuid = this.getUniqueId(2);
+      for (let index = 0; index < items.length; index++) {
+        const element = items[index];
+        this.dataService.makeorder(element, uuid)
+        .pipe(first())
+        .subscribe(
+        error => { });
+      }
+      this.dataService.makeorder2(uuid)
       .pipe(first())
       .subscribe(
       error => { });
-    }
-    this.dataService.makeorder2(uuid)
-    .pipe(first())
-    .subscribe(
-    error => { });
 
-    this.clearCart(items);
+      this.clearCart(items);
+    }
   }
 
 }

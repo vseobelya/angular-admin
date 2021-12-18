@@ -19,6 +19,8 @@
 
         <td><a *ngIf="logoutbtn" routerLink="dashboard" routerLinkActive="active">Корзина</a></td>
 
+        <td><a *ngIf="logoutbtn" routerLink="orders" routerLinkActive="active">Заказы</a></td>
+
         <td><button type="button" *ngIf="logoutbtn" (click)="logout()">Выйти</button></td>
 
       </tr>

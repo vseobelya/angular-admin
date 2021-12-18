@@ -1,6 +1,6 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Users } from './users';
 import {Product} from './products'
 
@@ -81,11 +81,17 @@ export class ApiService {
   }
 
   //get all goods details
-    public getgoods()
-      {
+    public getgoods(){
           return this.httpClient.get(this.baseUrl + '/catalog.php')
           .pipe(map(Product => {
             return Product;
           }));
+      }
+
+      public getorders(id_cust: any){
+          const params = new HttpParams()
+            .set('id_cust', id_cust);
+              return this.httpClient.get(this.baseUrl + '/getorders.php', {params})
+              .pipe();
       }
 }

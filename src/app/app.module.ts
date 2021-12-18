@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CatalogComponent } from './catalog/catalog.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    CatalogComponent
+    CatalogComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
