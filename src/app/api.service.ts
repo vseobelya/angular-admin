@@ -21,6 +21,7 @@ export class ApiService {
     return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
     .pipe(map(Users => {
       this.setToken(Users[0].name);
+      this.setUserId(Users[0].id);
       this.getLoggedInName.emit(true);
       return Users;
     }));
@@ -33,10 +34,38 @@ export class ApiService {
     }));
   }
 
+  public makeorder(item: any, uuid: any) {
+    // const id = localStorage.getItem('user_id');
+    const id_product = item.id;
+    const qtyTotal_product = item.qtyTotal;
+    return this.httpClient.post<any>(this.baseUrl + '/order_products.php', {id_product, qtyTotal_product, uuid})
+    .pipe(map(Product => {
+      return Product;
+    }));
+  }
+
+  public makeorder2(uuid: any) {
+    const id_cust = localStorage.getItem('user_id');
+    return this.httpClient.post<any>(this.baseUrl + '/order2.php', {id_cust, uuid})
+    .pipe();
+  }
+
+  // public makeorder(items: any) {
+  //   const id = localStorage.getItem('user_id');
+  //   return this.httpClient.post<any>(this.baseUrl + '/order.php', {items, id})
+  //   .subscribe();
+  // }
+
   //token
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
+
+  setUserId(id: string) {
+    localStorage.setItem('user_id', id);
+  }
+
+
   getToken() {
     return localStorage.getItem('token');
   }

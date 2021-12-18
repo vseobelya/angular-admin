@@ -17,8 +17,18 @@
     <td><button (click)="decrAmount(item)"> -</button></td>
     <td><button (click)="removeFromCart(item)"> x</button></td>
   </tr>
+  <br>
   <tr>
-    <td>Итого</td>
-    <td>{{total}}</td>
+    <td colspan="3" align="right"><b>ИТОГО</b></td>
+    <td >{{total}}</td>
+    <td colspan="3" align="right"><button (click)="clearCart(items)">Очистить корзину</button></td>
   </tr>
+
+  <!-- <tr>
+    <td colspan="3" align="right"><b>ИТОГО</b></td>
+    <td >{{total}}</td>
+  </tr> -->
+
 </table>
+<br>
+<button (click)="doorder(items)">Оформить заказ</button>

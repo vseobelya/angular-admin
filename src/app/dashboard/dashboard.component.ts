@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService} from '../cart.service';
+import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
+// import { v4 as uuidv4 } from 'uuid';
 // import { LocalStorageService } from './local-storage.service';
 
 import {Product} from '../products'
@@ -41,7 +45,9 @@ export class DashboardComponent implements OnInit {
     // }
   // ];
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,
+              private dataService: ApiService,
+              private router:Router) {
     this.items = this.cartService.getItems();
   }
 
@@ -74,6 +80,45 @@ export class DashboardComponent implements OnInit {
   get total() {
     return this.items.reduce((sum, current) => sum + current.subTotal, 0);
 
+  }
+
+  // doorder(items: any)  {
+  //   this.dataService.makeorder(items)
+  //   .pipe(first())
+  //   .subscribe(
+  //   data => {
+  //     this.router.navigate(['orders']);
+  //   },
+  //   error => { });
+  //
+  //   this.clearCart(items);
+  // }
+
+  getUniqueId(parts: number): string {
+  const stringArr = [];
+  for(let i = 0; i< parts; i++){
+    // tslint:disable-next-line:no-bitwise
+    const S4 = (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    stringArr.push(S4);
+  }
+  return stringArr.join('-');
+}
+
+  doorder(items: any)  {
+    const uuid = this.getUniqueId(2);
+    for (let index = 0; index < items.length; index++) {
+      const element = items[index];
+      this.dataService.makeorder(element, uuid)
+      .pipe(first())
+      .subscribe(
+      error => { });
+    }
+    this.dataService.makeorder2(uuid)
+    .pipe(first())
+    .subscribe(
+    error => { });
+
+    this.clearCart(items);
   }
 
 }
