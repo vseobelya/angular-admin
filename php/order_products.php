@@ -19,11 +19,12 @@ $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata)){
   $request = json_decode($postdata);
   $id_product = trim($request->id_product);
+  $id_cust = trim($request->id_cust);
   $qtyTotal_product = trim($request->qtyTotal_product);
   // $id_order = trim($request->uuid);
   $id_order = mysqli_real_escape_string($mysqli, trim($request->uuid));
   // $email = mysqli_real_escape_string($mysqli, trim($request->email));
-  $sql = "INSERT INTO order_products(id_order, id_product, kolvo) VALUES ('$id_order','$id_product','$qtyTotal_product')";
+  $sql = "INSERT INTO all_orders(id_order, date_order, id_cust, id_product, kolvo) VALUES ('$id_order', curdate(), '$id_cust', '$id_product','$qtyTotal_product')";
   if ($mysqli->query($sql) === TRUE) {
     $authdata = [
     'id_order' => $id_order,

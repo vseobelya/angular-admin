@@ -1,65 +1,56 @@
 <div>
     <h1>Мои заказы</h1>
-    <table>
+    <table border=1>
         <thead>
           <tr>
-            <!-- <th>ID</th> -->
             <th>№ заказа</th>
+            <th>Дата заказа</th>
             <th>Название</th>
             <th>Количество</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
 
-
-              <!-- <tr *ngFor="let group of data"> -->
-                <!-- <td>{{group.id_good}}</td> -->
-                <!-- <td>{{group.name_good}}</td>
-
-                <!-- <td>{{group.id_good}}</td> -->
-                <!-- <td>{{group.name_good}}</td>
-                <td>{{group.price_good}}</td>
-                <td>
-                  <div class=""> -->
-                    <!-- <button *ngIf="is_logged_in"  (click)="addToCart(group.name_good, group.price_good)">Купить</button> -->
-                    <!-- <button *ngIf="is_logged_in"  (click)="addToCart(data)">Купить</button>
-                  </div>
-                </td>
-              </tr>-->
-
-
               <tr *ngFor="let group of data">
-                <!-- <td>{{group.id_order}}</td>
-                <td>{{group.id_product}}</td>
-                <td>{{group.kolvo}}</td> -->
                 <td>{{group.id_order}}</td>
                 <td>{{group.date_order}}</td>
-                <td>{{group.id_cust}}</td>
-                <td>
-                  <!-- <div class="">
-                    <button *ngIf="is_logged_in"  (click)="addToCart(group.id_good, group.name_good, group.price_good)">Купить</button>
-                  </div> -->
-                </td>
+                <td>{{group.name_good}}</td>
+                <td>{{group.kolvo}}</td>
               </tr>
-
-
-
-
-              <!-- <tr *ngFor="let data of sampleSuggestionsArray">
-                <td>{{data.name}}</td>
-                <td>{{data.price}}</td>
-                <td>
-                  <div class="">
-                    <button *ngIf="is_logged_in"  (click)="addToCart(data)">Купить</button>
-                  </div>
-                </td>
-              </tr> -->
-
-
-
 
         </tbody>
       </table>
+
+      <!-- <table *ngFor="let group of data">
+        <tr>
+          <td>№ заказа: {{group.id_order}}</td>
+          <td>Дата заказа: {{group.date_order}}</td>
+        </tr>
+        <tr>
+          <td>{{group.name_good}}</td>
+          <td>{{group.kolvo}}</td>
+        </tr> -->
+          <!-- <thead>
+            <tr>
+              <th>№ заказа</th>
+              <th>Дата заказа</th>
+              <th>Название</th>
+              <th>Количество</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+
+                <tr >
+                  <td>{{group.id_order}}</td>
+                  <td>{{group.date_order}}</td>
+                  <td>{{group.name_good}}</td>
+                  <td>{{group.kolvo}}</td>
+                  <td>
+                  </td>
+                </tr>
+
+          </tbody> -->
+        <!-- </table> -->
 
 </div>

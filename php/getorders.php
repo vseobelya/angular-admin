@@ -15,10 +15,15 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$request = json_decode($postdata);
-$id_cust = trim($request->id_cust);
+// $request = json_decode($postdata);
+// $id_cust = trim($request->id_cust);
 // $trp = mysqli_query($conn, "SELECT * from orders WHERE id_order='".$id_cust."'");
-$trp = mysqli_query($conn, "SELECT * from orders");
+$sql = "SELECT g.name_good as name_good, o.id_order as id_order, o.date_order as date_order, o.kolvo as kolvo from all_orders o, goods g WHERE o.id_product = g.id_good and  id_cust='" . $_GET['id_cust'] . "'";
+// $sql = "SELECT * from all_orders o, goods g WHERE o.id_product = g.id_product and  id_cust='" . $_GET['id_cust'] . "'";
+// $sql = ;
+// $trp = mysqli_query($conn, "SELECT * from all_orders where id_cust='" . $_GET['id_cust'] . "'");
+// $trp = mysqli_query($conn, "SELECT * from all_orders o, goods g WHERE o.id_product = g.id_good and id_cust='" . $_GET['id_cust'] . "'");
+$trp = mysqli_query($conn, $sql);
 $rows = array();
 while($r = mysqli_fetch_assoc($trp)) {
     $rows[] = $r;

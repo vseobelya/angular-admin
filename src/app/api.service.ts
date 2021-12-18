@@ -35,20 +35,20 @@ export class ApiService {
   }
 
   public makeorder(item: any, uuid: any) {
-    // const id = localStorage.getItem('user_id');
+    const id_cust = localStorage.getItem('user_id');
     const id_product = item.id;
     const qtyTotal_product = item.qtyTotal;
-    return this.httpClient.post<any>(this.baseUrl + '/order_products.php', {id_product, qtyTotal_product, uuid})
+    return this.httpClient.post<any>(this.baseUrl + '/order_products.php', {id_product, qtyTotal_product, uuid, id_cust})
     .pipe(map(Product => {
       return Product;
     }));
   }
 
-  public makeorder2(uuid: any) {
-    const id_cust = localStorage.getItem('user_id');
-    return this.httpClient.post<any>(this.baseUrl + '/order2.php', {id_cust, uuid})
-    .pipe();
-  }
+  // public makeorder2(uuid: any) {
+  //   const id_cust = localStorage.getItem('user_id');
+  //   return this.httpClient.post<any>(this.baseUrl + '/order2.php', {id_cust, uuid})
+  //   .pipe();
+  // }
 
   // public makeorder(items: any) {
   //   const id = localStorage.getItem('user_id');
@@ -87,6 +87,20 @@ export class ApiService {
             return Product;
           }));
       }
+
+      // public getorders(id_cust: any){
+      //     const params = new HttpParams()
+      //       .set('id_cust', id_cust);
+      //         return this.httpClient.get(this.baseUrl + '/getorders.php', {params})
+      //         .pipe();
+      // }
+
+      // public getorders(){
+      //     // const params = new HttpParams()
+      //     //   .set('id_cust', id_cust);
+      //         return this.httpClient.get(this.baseUrl + '/getorders.php')
+      //         .pipe();
+      // }
 
       public getorders(id_cust: any){
           const params = new HttpParams()

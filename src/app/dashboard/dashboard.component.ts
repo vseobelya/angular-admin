@@ -15,6 +15,7 @@ import {Product} from '../products'
 })
 export class DashboardComponent implements OnInit {
   items: Product[] = [];
+  // total: number = 0;
 
   // sampleSuggestionsArray = [
   //   new Product(1, "Ананас", 100, 0),
@@ -49,11 +50,14 @@ export class DashboardComponent implements OnInit {
               private dataService: ApiService,
               private router:Router) {
     this.items = this.cartService.getItems();
+    // this.total = this.cartService.getTotal();
   }
 
   ngOnInit(): void {
     this.cartService.loadCart();
     this.items = this.cartService.getItems();
+    // this.total = this.cartService.getTotal()
+
   }
 
   clearCart(items: any) {
@@ -81,6 +85,16 @@ export class DashboardComponent implements OnInit {
     return this.items.reduce((sum, current) => sum + current.subTotal, 0);
 
   }
+
+  // get total() {
+  //   if(this.items.length>0){
+  //     return this.items.reduce((sum, current) => sum + current.subTotal, 0);
+  //   }
+  //   else{
+  //     return 0;
+  //   }
+  //
+  // }
 
   // doorder(items: any)  {
   //   this.dataService.makeorder(items)
@@ -114,10 +128,10 @@ export class DashboardComponent implements OnInit {
         .subscribe(
         error => { });
       }
-      this.dataService.makeorder2(uuid)
-      .pipe(first())
-      .subscribe(
-      error => { });
+      // this.dataService.makeorder2(uuid)
+      // .pipe(first())
+      // .subscribe(
+      // error => { });
 
       this.clearCart(items);
     }
